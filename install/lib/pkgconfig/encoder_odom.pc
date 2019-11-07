@@ -1,0 +1,8 @@
+prefix=/home/leonidas/robot_phy/install
+
+Name: encoder_odom
+Description: Description of encoder_odom
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/leonidas/robot_phy/install/lib 
+Requires: 

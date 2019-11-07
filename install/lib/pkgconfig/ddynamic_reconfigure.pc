@@ -1,0 +1,8 @@
+prefix=/home/leonidas/robot_phy/install
+
+Name: ddynamic_reconfigure
+Description: Description of ddynamic_reconfigure
+Version: 0.2.2
+Cflags: -I/home/leonidas/robot_phy/install/include
+Libs: -L/home/leonidas/robot_phy/install/lib -lddynamic_reconfigure
+Requires: roscpp dynamic_reconfigure

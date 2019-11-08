@@ -1,3 +1,5 @@
 devel
 build
 .catkin_workspace
+src/ddynamic_reconfigure
+src/realsense-ros

@@ -1,6 +1,6 @@
 <launch>
   <remap from="scan" to="rplidar/scan"/>
-  
+
   <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
   <param name="serial_port"         type="string" value="/dev/rplidarUSB"/>
   <param name="serial_baudrate"     type="int"    value="115200"/><!--A1/A2 -->

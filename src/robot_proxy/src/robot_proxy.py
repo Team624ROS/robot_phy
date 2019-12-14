@@ -5,9 +5,13 @@ from std_msgs.msg import Float32, Float64
 import threading
 from networktables import NetworkTables # Import this on robot
 from geometry_msgs.msg import Twist
+import logging
 
 # Creates proxy node
 rospy.init_node('robot_proxy')
+
+# To see messages from networktables, you must setup logging
+logging.basicConfig(level=logging.DEBUG)
 
 cond = threading.Condition()
 notified = [False]
@@ -19,7 +23,7 @@ def connectionListener(connected, info):
         notified[0] = True
         cond.notify()
 
-NetworkTables.initialize(server='10.06.24.2')
+NetworkTables.initialize(server='10.6.24.2')
 NetworkTables.addConnectionListener(connectionListener, immediateNotify=True)
 
 with cond:
@@ -33,7 +37,7 @@ class Proxy:
     def __init__(self):
         # Runs code below if connected to the server
         print("Connected!")
-        self.table = NetworkTables.getTable('SmartDashboard')  # Change for specific robot
+        self.table = NetworkTables.getTable('Nautilus')  # Change for specific robot
 
         # Creates ROS publishers of data
         #self.l_enc_pub = rospy.Publisher('/l_enc_data', Float32, queue_size=1)
@@ -84,7 +88,7 @@ class Proxy:
             current_time = rospy.Time.now()
 
             self.lin_vel = self.cmd_vel.linear.x
-            self.ang_vel = self.cmd_vel.angular.y
+            self.ang_vel = self.cmd_vel.angular.z
 
             # Get encoder and imu data from networktables
             #self.l_values.data = self.table.getNumber('l_enc_data',1)
